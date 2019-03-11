@@ -1,0 +1,4 @@
+
+https://redgrimm.github.io/paint-conversion/vallejo-game.html
+modelColors = document.querySelectorAll('.list-color td:first-child')
+JSON.stringify([...modelColors].map((x) => { return { name: x.innerText.split('\n')[0], rgb: x.innerText.split('\n')[1].split(' - ')[2] }; }))
