@@ -1,4 +1,4 @@
-# paint-differemce
+# hobby-paints-color-matcher
 
 ## Project setup
 ```
