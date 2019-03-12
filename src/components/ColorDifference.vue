@@ -2,6 +2,9 @@
     <div>
         <div class="form">
             <input type="text" v-model="textFilter" placeholder="Search colors">
+            <div class="filler"></div>
+            <button class="btn" :disabled="numberOfMatchesToDisplay >= 10" @click="numberOfMatchesToDisplay += 1">More matches</button>
+            <button class="btn" :disabled="numberOfMatchesToDisplay <= 1" @click="numberOfMatchesToDisplay -= 1">Less matches</button>
         </div>
         <hr>
         <div>
@@ -9,7 +12,7 @@
                 <thead>
                 <tr>
                     <th>Base color</th>
-                    <th colspan="5">Matches</th>
+                    <th :colspan="numberOfMatchesToDisplay">Matches</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -22,7 +25,7 @@
                                     class="code">{{c.code}}</span></div>
                         </div>
                     </td>
-                    <td v-for="s in c.scores.slice(0, 5)" :key="`${c.code}-${s.c.code}`">
+                    <td v-for="s in c.scores.slice(0, numberOfMatchesToDisplay)" :key="`${c.code}-${s.c.code}`">
                         <div class="color">
                             <div class="swatch" :style="`background-color: ${s.c.rgb}`">
                                 <div class="score">
@@ -59,6 +62,7 @@
                 vmc: [],
                 vgc: [],
                 numeral,
+                numberOfMatchesToDisplay: 4,
             };
         },
         computed: {
@@ -162,15 +166,27 @@
 
     .form {
         margin-bottom: 16px;
+        display: flex;
+        align-items: center;
     }
 
-    input {
+    input, button {
         border: solid 1px #ccc;
         border-radius: 4px;
         padding: 6px 12px;
         -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
         -moz-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
         box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+        font-size: 16px;
+    }
+
+    button {
+        font-weight: 600;
+        margin-left: 8px;
+    }
+
+    .filler {
+        flex-grow: 1;
     }
 
     table {
