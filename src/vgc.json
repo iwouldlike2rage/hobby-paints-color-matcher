@@ -1,432 +1,432 @@
 [
   {
     "name": "Dead White",
-    "rgb": "#ffffff",
+    "rgb": "#FFFFFF",
     "code": "72.001"
   },
   {
     "name": "Pale Flesh",
-    "rgb": "#f6bdb3",
+    "rgb": "#E6BFAB",
     "code": "72.003"
   },
   {
     "name": "Elf Skintone",
-    "rgb": "#f8a070",
+    "rgb": "#D7A57A",
     "code": "72.004"
   },
   {
     "name": "Moon Yellow",
-    "rgb": "#fff103",
+    "rgb": "#F8E036",
     "code": "72.005"
   },
   {
     "name": "Sun Yellow",
-    "rgb": "#ffcf07",
+    "rgb": "#EAA132",
     "code": "72.006"
   },
   {
     "name": "Gold Yellow",
-    "rgb": "#fdb318",
+    "rgb": "#E79634",
     "code": "72.007"
   },
   {
     "name": "Orange Fire",
-    "rgb": "#f1652e",
+    "rgb": "#DA6C33",
     "code": "72.008"
   },
   {
     "name": "Hot Orange",
-    "rgb": "#e43027",
+    "rgb": "#D85739",
     "code": "72.009"
   },
   {
     "name": "Bloody Red",
-    "rgb": "#bf282e",
+    "rgb": "#AF2939",
     "code": "72.010"
   },
   {
     "name": "Gory Red",
-    "rgb": "#810504",
+    "rgb": "#6F3E3D",
     "code": "72.011"
   },
   {
     "name": "Scarlet Red",
-    "rgb": "#741330",
+    "rgb": "#902332",
     "code": "72.012"
   },
   {
     "name": "Squid Pink",
-    "rgb": "#da7fb5",
+    "rgb": "#C78DB4",
     "code": "72.013"
   },
   {
     "name": "Warlord Purple",
-    "rgb": "#7d1a44",
+    "rgb": "#A43370",
     "code": "72.014"
   },
   {
     "name": "Hexed Lichen",
-    "rgb": "#34274d",
+    "rgb": "#4A317B",
     "code": "72.015"
   },
   {
     "name": "Royal Purple",
-    "rgb": "#23264f",
+    "rgb": "#45435F",
     "code": "72.016"
   },
   {
     "name": "Dark Blue",
-    "rgb": "#2b265d",
+    "rgb": "#444973",
     "code": "72.017"
   },
   {
-    "name": "Stormy Night",
-    "rgb": "#1f1a4f",
+    "name": "Stormy Blue",
+    "rgb": "#3F3F57",
     "code": "72.018"
   },
   {
     "name": "Night Blue",
-    "rgb": "#19183f",
+    "rgb": "#393945",
     "code": "72.019"
   },
   {
-    "name": "Imperial Purple",
-    "rgb": "#211a4b",
+    "name": "Imperial Blue",
+    "rgb": "#354760",
     "code": "72.020"
   },
   {
     "name": "Magic Blue",
-    "rgb": "#024381",
+    "rgb": "#236DAD",
     "code": "72.021"
   },
   {
     "name": "Ultramarine Blue",
-    "rgb": "#373592",
+    "rgb": "#2A5586",
     "code": "72.022"
   },
   {
     "name": "Electric Blue",
-    "rgb": "#008cbf",
+    "rgb": "#4E93B2",
     "code": "72.023"
   },
   {
     "name": "Turquoise",
-    "rgb": "#03676f",
+    "rgb": "#1D7F8B",
     "code": "72.024"
   },
   {
     "name": "Foul Green",
-    "rgb": "#239378",
+    "rgb": "#579B81",
     "code": "72.025"
   },
   {
     "name": "Jade Green",
-    "rgb": "#128379",
+    "rgb": "#057F68",
     "code": "72.026"
   },
   {
     "name": "Scurvy Green",
-    "rgb": "#09474e",
+    "rgb": "#315550",
     "code": "72.027"
   },
   {
     "name": "Dark Green",
-    "rgb": "#083c2a",
+    "rgb": "#38443D",
     "code": "72.028"
   },
   {
     "name": "Sick Green",
-    "rgb": "#096638",
+    "rgb": "#516D51",
     "code": "72.029"
   },
   {
     "name": "Goblin Green",
-    "rgb": "#23743c",
+    "rgb": "#6A7047",
     "code": "72.030"
   },
   {
-    "name": "Camoflage Green",
-    "rgb": "#71753a",
+    "name": "Camouflage Green",
+    "rgb": "#8A7A45",
     "code": "72.031"
   },
   {
-    "name": "Scorpion Green",
-    "rgb": "#48b851",
+    "name": "Scorpy Green",
+    "rgb": "#7FA455",
     "code": "72.032"
   },
   {
     "name": "Livery Green",
-    "rgb": "#9ece65",
+    "rgb": "#A5C261",
     "code": "72.033"
   },
   {
-    "name": "Bone White",
-    "rgb": "#e8be86",
+    "name": "Bonewhite",
+    "rgb": "#D0C09A",
     "code": "72.034"
   },
   {
     "name": "Dead Flesh",
-    "rgb": "#bcb686",
+    "rgb": "#B1A273",
     "code": "72.035"
   },
   {
     "name": "Bronze Fleshtone",
-    "rgb": "#db945c",
+    "rgb": "#BC8651",
     "code": "72.036"
   },
   {
     "name": "Filthy Brown",
-    "rgb": "#f58d2b",
+    "rgb": "#BB8345",
     "code": "72.037"
   },
   {
     "name": "Scrofulous Brown",
-    "rgb": "#d68030",
+    "rgb": "#B37A3D",
     "code": "72.038"
   },
   {
     "name": "Plague Brown",
-    "rgb": "#cc9b34",
+    "rgb": "#C89132",
     "code": "72.039"
   },
   {
     "name": "Leather Brown",
-    "rgb": "#7b5d2a",
+    "rgb": "#806442",
     "code": "72.040"
   },
   {
     "name": "Dwarf Skin",
-    "rgb": "#cc7c67",
+    "rgb": "#CE946F",
     "code": "72.041"
   },
   {
     "name": "Parasite Brown",
-    "rgb": "#b1481f",
+    "rgb": "#985328",
     "code": "72.042"
   },
   {
     "name": "Beasty Brown",
-    "rgb": "#55432d",
+    "rgb": "#735741",
     "code": "72.043"
   },
   {
     "name": "Dark Fleshtone",
-    "rgb": "#4f2b26",
+    "rgb": "#5C413B",
     "code": "72.044"
   },
   {
     "name": "Charred Brown",
-    "rgb": "#39343b",
+    "rgb": "#4B403D",
     "code": "72.045"
   },
   {
     "name": "Ghost Grey",
-    "rgb": "#a7c5db",
+    "rgb": "#C2CAD1",
     "code": "72.046"
   },
   {
     "name": "Wolf Grey",
-    "rgb": "#90a2bc",
+    "rgb": "#B2C0CB",
     "code": "72.047"
   },
   {
     "name": "Sombre Grey",
-    "rgb": "#4c5c7d",
+    "rgb": "#60697D",
     "code": "72.048"
   },
   {
     "name": "Stonewall Grey",
-    "rgb": "#828e95",
+    "rgb": "#A09F9F",
     "code": "72.049"
   },
   {
     "name": "Cold Grey",
-    "rgb": "#54646d",
+    "rgb": "#7B7C7D",
     "code": "72.050"
   },
   {
     "name": "Black",
-    "rgb": "#000000",
+    "rgb": "#010000",
     "code": "72.051"
   },
   {
     "name": "Khaki",
-    "rgb": "#8c806d",
+    "rgb": "#A89C76",
     "code": "72.061"
   },
   {
     "name": "Earth",
-    "rgb": "#6f563d",
+    "rgb": "#776148",
     "code": "72.062"
   },
   {
     "name": "Desert Yellow",
-    "rgb": "#8e7845",
+    "rgb": "#96874E",
     "code": "72.063"
   },
   {
     "name": "Yellow Olive",
-    "rgb": "#063b2f",
+    "rgb": "#505530",
     "code": "72.064"
   },
   {
     "name": "Terracota",
-    "rgb": "#6b1306",
+    "rgb": "#64403B",
     "code": "72.065"
   },
   {
     "name": "Tan",
-    "rgb": "#9f4746",
+    "rgb": "#A05D50",
     "code": "72.066"
   },
   {
     "name": "Cayman Green",
-    "rgb": "#285648",
+    "rgb": "#5C5946",
     "code": "72.067"
   },
   {
     "name": "Smokey Ink",
-    "rgb": "#2b2325",
+    "rgb": "#2E2726",
     "code": "72.068"
   },
   {
     "name": "Glacier Blue",
-    "rgb": "#acd0ee",
+    "rgb": "#B7CBE4",
     "code": "72.095"
   },
   {
     "name": "Verdigris",
-    "rgb": "#b3ceca",
+    "rgb": "#AFD5CF",
     "code": "72.096"
   },
   {
     "name": "Pale Yellow",
-    "rgb": "#d5c179",
+    "rgb": "#E7CF87",
     "code": "72.097"
   },
   {
     "name": "Elfic Flesh",
-    "rgb": "#cdc29c",
+    "rgb": "#E7D7BB",
     "code": "72.098"
   },
   {
     "name": "Cadmium Skin",
-    "rgb": "#fab78a",
+    "rgb": "#EDB38B",
     "code": "72.099"
   },
   {
     "name": "Rosy Flesh",
-    "rgb": "#f89e84",
+    "rgb": "#E1988C",
     "code": "72.100"
   },
   {
     "name": "Offwhite",
-    "rgb": "#f5f4da",
+    "rgb": "#FBF2DD",
     "code": "72.101"
   },
   {
     "name": "Steel Grey",
-    "rgb": "#64889d",
+    "rgb": "#496579",
     "code": "72.102"
   },
   {
     "name": "Fluo Yellow",
-    "rgb": "#eeea50",
+    "rgb": "#E1DC4C",
     "code": "72.103"
   },
   {
     "name": "Fluo Green",
-    "rgb": "#9dcd64",
+    "rgb": "#7BAF4C",
     "code": "72.104"
   },
   {
     "name": "Mutation Green",
-    "rgb": "#296934",
+    "rgb": "#455745",
     "code": "72.105"
   },
   {
-    "name": "Scarlet \"Blood\" Red",
-    "rgb": "#b72a38",
+    "name": "Scarlet Red",
+    "rgb": "#9D3F39",
     "code": "72.106"
   },
   {
     "name": "Heavy Skintone",
-    "rgb": "#aa7b62",
+    "rgb": "#9A7963",
     "code": "72.140"
   },
   {
     "name": "Heavy Red",
-    "rgb": "#943238",
+    "rgb": "#833A3C",
     "code": "72.141"
   },
   {
     "name": "Heavy Violet",
-    "rgb": "#4c2e65",
+    "rgb": "#464166",
     "code": "72.142"
   },
   {
     "name": "Heavy Blue",
-    "rgb": "#29556d",
+    "rgb": "#415974",
     "code": "72.143"
   },
   {
     "name": "Heavy Blue Grey",
-    "rgb": "#9ca7a7",
+    "rgb": "#81898F",
     "code": "72.144"
   },
   {
     "name": "Heavy Grey",
-    "rgb": "#626d54",
+    "rgb": "#666250",
     "code": "72.145"
   },
   {
     "name": "Heavy Green",
-    "rgb": "#566840",
+    "rgb": "#495045",
     "code": "72.146"
   },
   {
     "name": "Heavy Black Green",
-    "rgb": "#18433d",
+    "rgb": "#3F4842",
     "code": "72.147"
   },
   {
     "name": "Heavy Warm Grey",
-    "rgb": "#939066",
+    "rgb": "#A89C76",
     "code": "72.148"
   },
   {
     "name": "Heavy Khaki",
-    "rgb": "#9d965d",
+    "rgb": "#907E55",
     "code": "72.149"
   },
   {
     "name": "Heavy Ochre",
-    "rgb": "#a87536",
+    "rgb": "#A77736",
     "code": "72.150"
   },
   {
-    "name": "Heavy Gold Brown",
-    "rgb": "#ba8636",
+    "name": "Heavy Goldbrown",
+    "rgb": "#AE864F",
     "code": "72.151"
   },
   {
     "name": "Heavy Orange",
-    "rgb": "#ee5527",
+    "rgb": "#C58779",
     "code": "72.152"
   },
   {
     "name": "Heavy Brown",
-    "rgb": "#705d41",
+    "rgb": "#786550",
     "code": "72.153"
   },
   {
     "name": "Heavy Sienna",
-    "rgb": "#744642",
+    "rgb": "#5D473F",
     "code": "72.154"
   },
   {
     "name": "Heavy Charcoal",
-    "rgb": "#1c2e2e",
+    "rgb": "#43474C",
     "code": "72.155"
   }
 ]

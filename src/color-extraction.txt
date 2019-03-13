@@ -2,3 +2,25 @@
 https://redgrimm.github.io/paint-conversion/vallejo-game.html
 modelColors = document.querySelectorAll('.list-color td:first-child')
 JSON.stringify([...modelColors].map((x) => { return { name: x.innerText.split('\n')[0], rgb: x.innerText.split('\n')[1].split(' - ')[2] }; }))
+
+
+
+lastN = 800;
+JSON.stringify(json.map((x, i) => {
+  const skip = [939, 828, 834, 937, 935, 934, 938, 936, // Transparent
+    950, 861, 997, 996, 878, 801, 998, 999, 865, 864, 863, 800, // Metal
+    854, 855, // Fluo
+    853, 832, 831, // Glazes
+    842, 919, 950, 951, // Whites / Blacks
+    848, 849, 813, 931, 932, 933 // ?
+  ];
+  let n = 800 + i;
+  n += skip.filter(x => x <= lastN).length;
+  while (skip.find(x => x === n) != null) {
+    n += 1;
+  }
+  lastN = n;
+  return { ...x, code: `70.${n}` };
+}));
+
+https://encycolorpedia.com/paints?color=7e4546
