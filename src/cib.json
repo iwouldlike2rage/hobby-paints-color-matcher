@@ -1,0 +1,134 @@
+[
+  {
+    "name": "Paint name",
+    "rgb": "Hex colour"
+  },
+  {
+    "name": "Abaddon Black",
+    "rgb": "#231F20"
+  },
+  {
+    "name": "Averland Sunset",
+    "rgb": "#FDB825"
+  },
+  {
+    "name": "Bugmans Glow",
+    "rgb": "#834F44"
+  },
+  {
+    "name": "Caledor Sky",
+    "rgb": "#396E9E"
+  },
+  {
+    "name": "Caliban Green",
+    "rgb": "#00401F"
+  },
+  {
+    "name": "Castellan Green",
+    "rgb": "#314821"
+  },
+  {
+    "name": "Celestra Grey",
+    "rgb": "#90A8A8"
+  },
+  {
+    "name": "Ceramite White",
+    "rgb": "#FFFFFF"
+  },
+  {
+    "name": "Daemonette Hide",
+    "rgb": "#696684"
+  },
+  {
+    "name": "Death Guard Green",
+    "rgb": "#848A66"
+  },
+  {
+    "name": "Deathworld Forest",
+    "rgb": "#5C6730"
+  },
+  {
+    "name": "Dryad Bark",
+    "rgb": "#33312D"
+  },
+  {
+    "name": "Incubi Darkness",
+    "rgb": "#0B474A"
+  },
+  {
+    "name": "Jokaero Orange",
+    "rgb": "#EE3823"
+  },
+  {
+    "name": "Kantor Blue",
+    "rgb": "#002151"
+  },
+  {
+    "name": "Khorne Red",
+    "rgb": "#6A0001"
+  },
+  {
+    "name": "Macragge Blue",
+    "rgb": "#0D407F"
+  },
+  {
+    "name": "Mechanicus Standard Grey",
+    "rgb": "#3D4B4D"
+  },
+  {
+    "name": "Mephiston Red",
+    "rgb": "#9A1115"
+  },
+  {
+    "name": "Mournfang Brown",
+    "rgb": "#640909"
+  },
+  {
+    "name": "Naggaroth Night",
+    "rgb": "#3D3354"
+  },
+  {
+    "name": "Rakarth Flesh",
+    "rgb": "#A29E91"
+  },
+  {
+    "name": "Ratskin Flesh",
+    "rgb": "#AD6B4C"
+  },
+  {
+    "name": "Rhinox Hide",
+    "rgb": "#493435"
+  },
+  {
+    "name": "Screamer Pink",
+    "rgb": "#7C1645"
+  },
+  {
+    "name": "Steel Legion Drab",
+    "rgb": "#5E5134"
+  },
+  {
+    "name": "Stegadon Scale Green",
+    "rgb": "#074863"
+  },
+  {
+    "name": "The Fang Grey",
+    "rgb": "#436174"
+  },
+  {
+    "name": "Thousand Sons Blue",
+    "rgb": "#18ABCC"
+  },
+  {
+    "name": "Waaagh! Flesh",
+    "rgb": "#1F5429"
+  },
+  {
+    "name": "XV-88",
+    "rgb": "#72491E"
+  },
+  {
+    "name": "Zandri Dust",
+    "rgb": "#9E915C"
+  }
+]

@@ -1,0 +1,258 @@
+[
+  {
+    "name": "Administratum Grey",
+    "rgb": "#949B95"
+  },
+  {
+    "name": "Ahriman Blue",
+    "rgb": "#1F8C9C"
+  },
+  {
+    "name": "Alaitoc Blue",
+    "rgb": "#295788"
+  },
+  {
+    "name": "Altdorf Guard Blue",
+    "rgb": "#1F56A7"
+  },
+  {
+    "name": "Balor Brown",
+    "rgb": "#8B5910"
+  },
+  {
+    "name": "Baneblade Brown",
+    "rgb": "#937F6D"
+  },
+  {
+    "name": "Bestigor Flesh",
+    "rgb": "#D38A57"
+  },
+  {
+    "name": "Cadian Fleshtone",
+    "rgb": "#C77958"
+  },
+  {
+    "name": "Calgar Blue",
+    "rgb": "#4272B8"
+  },
+  {
+    "name": "Dark Reaper",
+    "rgb": "#3B5150"
+  },
+  {
+    "name": "Dawnstone",
+    "rgb": "#70756E"
+  },
+  {
+    "name": "Deathclaw Brown",
+    "rgb": "#B36853"
+  },
+  {
+    "name": "Doombull Brown",
+    "rgb": "#5D0009"
+  },
+  {
+    "name": "Elysian Green",
+    "rgb": "#748F39"
+  },
+  {
+    "name": "Emperors Children",
+    "rgb": "#B94278"
+  },
+  {
+    "name": "Eshin Grey",
+    "rgb": "#4A4F52"
+  },
+  {
+    "name": "Evil Sunz Scarlet",
+    "rgb": "#C2191F"
+  },
+  {
+    "name": "Fenrisian Grey",
+    "rgb": "#719BB7"
+  },
+  {
+    "name": "Fire Dragon Bright",
+    "rgb": "#F58652"
+  },
+  {
+    "name": "Flash Gitz Yellow",
+    "rgb": "#FFF200"
+  },
+  {
+    "name": "Flayed One Flesh",
+    "rgb": "#F0D9B8"
+  },
+  {
+    "name": "Genestealer Purple",
+    "rgb": "#7761AB"
+  },
+  {
+    "name": "Gorthor Brown",
+    "rgb": "#654741"
+  },
+  {
+    "name": "Hoeth Blue",
+    "rgb": "#4C7FB4"
+  },
+  {
+    "name": "Kabalite Green",
+    "rgb": "#038C67"
+  },
+  {
+    "name": "Karak Stone",
+    "rgb": "#BB9662"
+  },
+  {
+    "name": "Kislev Flesh",
+    "rgb": "#D6A875"
+  },
+  {
+    "name": "Loren Forest",
+    "rgb": "#50702D"
+  },
+  {
+    "name": "Lothern Blue",
+    "rgb": "#34A2CF"
+  },
+  {
+    "name": "Moot Green",
+    "rgb": "#52B244"
+  },
+  {
+    "name": "Nurgling Green",
+    "rgb": "#849C63"
+  },
+  {
+    "name": "Ogryn Camo",
+    "rgb": "#9DA94B"
+  },
+  {
+    "name": "Pallid Wych Flesh",
+    "rgb": "#CDCEBE"
+  },
+  {
+    "name": "Pink Horror",
+    "rgb": "#90305D"
+  },
+  {
+    "name": "Russ Grey",
+    "rgb": "#547588"
+  },
+  {
+    "name": "Screaming Skull",
+    "rgb": "#D2D4A2"
+  },
+  {
+    "name": "Skarsnik Green",
+    "rgb": "#5F9370"
+  },
+  {
+    "name": "Skavenblight Dinge",
+    "rgb": "#47413B"
+  },
+  {
+    "name": "Skrag Brown",
+    "rgb": "#90490F"
+  },
+  {
+    "name": "Slaanesh Grey",
+    "rgb": "#8E8C97"
+  },
+  {
+    "name": "Sotek Green",
+    "rgb": "#0B6974"
+  },
+  {
+    "name": "Squig Orange",
+    "rgb": "#AA4F44"
+  },
+  {
+    "name": "Stormvermin Fur",
+    "rgb": "#736B65"
+  },
+  {
+    "name": "Straken Green",
+    "rgb": "#628126"
+  },
+  {
+    "name": "Sybarite Green",
+    "rgb": "#30A56C"
+  },
+  {
+    "name": "Tallarn Sand",
+    "rgb": "#A67610"
+  },
+  {
+    "name": "Tau Light Ochre",
+    "rgb": "#BF6E1D"
+  },
+  {
+    "name": "Teclis Blue",
+    "rgb": "#317EC1"
+  },
+  {
+    "name": "Temple Guard Blue",
+    "rgb": "#339A8D"
+  },
+  {
+    "name": "Thunderhawk Blue",
+    "rgb": "#417074"
+  },
+  {
+    "name": "Troll Slayer Orange",
+    "rgb": "#F36D2D"
+  },
+  {
+    "name": "Tuskgor Fur",
+    "rgb": "#883636"
+  },
+  {
+    "name": "Ulthuan Grey",
+    "rgb": "#C7E0D9"
+  },
+  {
+    "name": "Ungor Flesh",
+    "rgb": "#D6A766"
+  },
+  {
+    "name": "Ushabti Bone",
+    "rgb": "#BBBB7F"
+  },
+  {
+    "name": "Warboss Green",
+    "rgb": "#3E805D"
+  },
+  {
+    "name": "Warpfiend Grey",
+    "rgb": "#6B6A74"
+  },
+  {
+    "name": "Warpstone Glow",
+    "rgb": "#1E7331"
+  },
+  {
+    "name": "Wazdakka Red",
+    "rgb": "#8C0A0C"
+  },
+  {
+    "name": "White Scar",
+    "rgb": "#FFFFFF"
+  },
+  {
+    "name": "Wild Rider Red",
+    "rgb": "#EA2F28"
+  },
+  {
+    "name": "Xereus Purple",
+    "rgb": "#471F5F"
+  },
+  {
+    "name": "Yriel Yellow",
+    "rgb": "#FFDA00"
+  },
+  {
+    "name": "Zamesi Desert",
+    "rgb": "#DDA026"
+  }
+]
