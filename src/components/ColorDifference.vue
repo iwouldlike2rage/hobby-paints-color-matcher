@@ -4,12 +4,16 @@
             Loading...
         </div>
         <div v-if="!isLoading" class="loaded">
-            <div class="form">
-                <label v-for="cf in colorFamilies" :key="cf.family">
-                    <input type="checkbox" :checked="cf.isEnabled" @click="toggleFamily(cf)"> {{ cf.family }}</label>
+            <div class="form color-families">
+                <label v-for="cf in colorFamilies" :key="cf.family" :class="{ checked: cf.isEnabled }">
+                    <input type="checkbox" :checked="cf.isEnabled" @click="toggleFamily(cf)">
+                    <img :src="cf.logo" alt="">
+                    <span>{{ cf.family }}</span>
+                </label>
             </div>
             <div class="tab-list">
-                <button @click="selectedTab = 'color_list'" :class="{ selected: selectedTab == 'color_list' }">Paint list
+                <button @click="selectedTab = 'color_list'" :class="{ selected: selectedTab == 'color_list' }">Paint
+                    list
                 </button>
                 <button @click="selectedTab = 'stats'" :class="{ selected: selectedTab == 'stats' }">Purchase
                     recommendations
@@ -18,7 +22,8 @@
             <div class="tab" id="stats" v-show="selectedTab == 'stats'">
                 <div class="form">
                     <p>The following list is a recommendation of paints to purchase based on the colors you already own.<br>
-                        It looks at the biggest existing gaps (e-delta) between all your colors and suggests colors close to
+                        It looks at the biggest existing gaps (e-delta) between all your colors and suggests colors
+                        close to
                         the halfway point for each of these gaps.</p>
                 </div>
                 <div v-if="colorPairsWithBiggestDistance != null">
@@ -61,14 +66,17 @@
                     <input type="text" v-model="textFilter" placeholder="Search colors">
                     <div class="filler"></div>
                     <label for="only_show_owned_colors">
-                        <input type="checkbox" id="only_show_owned_colors" v-model="onlyShowOwnedColors"> Only show colors I
+                        <input type="checkbox" id="only_show_owned_colors" v-model="onlyShowOwnedColors"> Only show
+                        colors I
                         own
                     </label>
-                    <button class="btn" :disabled="numberOfMatchesToDisplay >= 10" @click="numberOfMatchesToDisplay += 1">
+                    <button class="btn" :disabled="numberOfMatchesToDisplay >= 10"
+                            @click="numberOfMatchesToDisplay += 1">
                         + More
                         matches
                     </button>
-                    <button class="btn" :disabled="numberOfMatchesToDisplay <= 1" @click="numberOfMatchesToDisplay -= 1">
+                    <button class="btn" :disabled="numberOfMatchesToDisplay <= 1"
+                            @click="numberOfMatchesToDisplay -= 1">
                         - Less
                         matches
                     </button>
@@ -143,7 +151,7 @@
                 return this.colorFamilies.filter(x => x.isEnabled).map(x => x.family);
             },
             colorsFromEnabledFamilies() {
-              return this.all.filter(x=> this.enabledFamilies.indexOf(x.family) > -1);
+                return this.all.filter(x => this.enabledFamilies.indexOf(x.family) > -1);
             },
             filteredColors() {
                 const filtered = this.textFilter.trim() !== ''
@@ -277,6 +285,35 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+    .color-families label {
+        border: solid 1px rgba(0,0,0,0.1);
+        border-radius: 4px;
+        padding: 8px;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 2px 3px rgba(0,0,0,0.15);
+        font-size: 0.9em;
+        cursor: pointer;
+    }
+    .color-families label:hover{
+        background: rgba(50, 205, 50, 0.15);
+    }
+
+    .color-families label input {
+        opacity: 0;
+        width: 0;
+    }
+
+    .color-families label.checked {
+        font-weight: 600;
+        background: rgba(50, 205, 50, 0.27);
+    }
+
+    .color-families img {
+        height: 32px;
+        margin-right: 8px;
+    }
 
     .form {
         margin-bottom: 16px;
