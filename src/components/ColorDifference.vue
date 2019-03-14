@@ -1,91 +1,107 @@
 <template>
     <div>
-        <div class="tab-list">
-            <button @click="selectedTab = 'color_list'" :class="{ selected: selectedTab == 'color_list' }">Paint list</button>
-            <button @click="selectedTab = 'stats'" :class="{ selected: selectedTab == 'stats' }">Purchase recommendations</button>
+        <div v-if="isLoading" class="loading">
+            Loading...
         </div>
-        <div class="tab" id="stats" v-show="selectedTab == 'stats'">
+        <div v-if="!isLoading" class="loaded">
             <div class="form">
-                <p>The following list is a recommendation of paints to purchase based on the colors you already own.<br>
-                    It looks at the biggest existing gaps (e-delta) between all your colors and suggests colors close to the halfway point for each of these gaps.</p>
+                <label v-for="cf in colorFamilies" :key="cf.family">
+                    <input type="checkbox" :checked="cf.isEnabled" @click="toggleFamily(cf)"> {{ cf.family }}</label>
             </div>
-            <div v-if="colorPairsWithBiggestDistance != null">
-                <table>
-                    <thead>
-                    <tr>
-                        <th>Recommended buy</th>
-                        <th>First owned color</th>
-                        <th>Distance (e-delta)</th>
-                        <th>Second owned color</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr v-for="pair in colorPairsWithBiggestDistance.slice(0,20)" :key="pair.id">
-                        <td>
-                            <color-swatch v-if="pair.suggestedBuy != null"
-                                          :color="pair.suggestedBuy.c"
-                                          :score="pair.suggestedBuy.d"
-                                          :is-base-color="true"></color-swatch>
+            <div class="tab-list">
+                <button @click="selectedTab = 'color_list'" :class="{ selected: selectedTab == 'color_list' }">Paint list
+                </button>
+                <button @click="selectedTab = 'stats'" :class="{ selected: selectedTab == 'stats' }">Purchase
+                    recommendations
+                </button>
+            </div>
+            <div class="tab" id="stats" v-show="selectedTab == 'stats'">
+                <div class="form">
+                    <p>The following list is a recommendation of paints to purchase based on the colors you already own.<br>
+                        It looks at the biggest existing gaps (e-delta) between all your colors and suggests colors close to
+                        the halfway point for each of these gaps.</p>
+                </div>
+                <div v-if="colorPairsWithBiggestDistance != null">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Recommended buy</th>
+                            <th>First owned color</th>
+                            <th>Distance (e-delta)</th>
+                            <th>Second owned color</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="pair in colorPairsWithBiggestDistance.slice(0,20)" :key="pair.id">
+                            <td>
+                                <color-swatch v-if="pair.suggestedBuy != null"
+                                              :color="pair.suggestedBuy.c"
+                                              :score="pair.suggestedBuy.d"
+                                              :is-base-color="true"></color-swatch>
 
-                        </td>
-                        <td>
-                            <color-swatch :color="pair.color1"
-                                          :is-base-color="false"></color-swatch>
-                        </td>
-                        <td style="text-align: center;">
-                            <b>{{ numeral(pair.distance).format('0.00') }}</b>
-                        </td>
-                        <td>
-                            <color-swatch :color="pair.color2"
-                                          :is-base-color="false"></color-swatch>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+                            </td>
+                            <td>
+                                <color-swatch :color="pair.color1"
+                                              :is-base-color="false"></color-swatch>
+                            </td>
+                            <td style="text-align: center;">
+                                <b>{{ numeral(pair.distance).format('0.00') }}</b>
+                            </td>
+                            <td>
+                                <color-swatch :color="pair.color2"
+                                              :is-base-color="false"></color-swatch>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
-        <div class="tab" id="color_list" v-show="selectedTab == 'color_list'">
-            <div class="form">
-                <input type="text" v-model="textFilter" placeholder="Search colors">
-                <div class="filler"></div>
-                <label for="only_show_owned_colors">
-                    <input type="checkbox" id="only_show_owned_colors" v-model="onlyShowOwnedColors"> Only show colors I own
-                </label>
-                <button class="btn" :disabled="numberOfMatchesToDisplay >= 10" @click="numberOfMatchesToDisplay += 1">
-                    + More
-                    matches
-                </button>
-                <button class="btn" :disabled="numberOfMatchesToDisplay <= 1" @click="numberOfMatchesToDisplay -= 1">
-                    - Less
-                    matches
-                </button>
-            </div>
-            <div>
-                <table>
-                    <thead>
-                    <tr>
-                        <th>Base color ({{filteredColors.length}})</th>
-                        <th :colspan="numberOfMatchesToDisplay">Matches</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr v-for="c in filteredColors" :key="c.id">
-                        <td>
-                            <div class="color">
-                                <color-swatch :color="c"
-                                              :is-base-color="true"
-                                              @toggleOwnership="toggleOwnership(c)"></color-swatch>
-                            </div>
-                        </td>
-                        <td v-for="s in c.scores.filter(x => onlyShowOwnedColors === false || x.c.isOwned).slice(0, numberOfMatchesToDisplay)"
-                            :key="s.id">
-                            <color-swatch :color="s.c"
-                                          :score="s.d"
-                                          :is-base-color="false"></color-swatch>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+            <div class="tab" id="color_list" v-show="selectedTab == 'color_list'">
+                <div class="form">
+                    <input type="text" v-model="textFilter" placeholder="Search colors">
+                    <div class="filler"></div>
+                    <label for="only_show_owned_colors">
+                        <input type="checkbox" id="only_show_owned_colors" v-model="onlyShowOwnedColors"> Only show colors I
+                        own
+                    </label>
+                    <button class="btn" :disabled="numberOfMatchesToDisplay >= 10" @click="numberOfMatchesToDisplay += 1">
+                        + More
+                        matches
+                    </button>
+                    <button class="btn" :disabled="numberOfMatchesToDisplay <= 1" @click="numberOfMatchesToDisplay -= 1">
+                        - Less
+                        matches
+                    </button>
+                </div>
+                <div>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Base color ({{filteredColors.length}})</th>
+                            <th :colspan="numberOfMatchesToDisplay">Matches</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="c in filteredColors" :key="c.id">
+                            <td>
+                                <div class="color">
+                                    <color-swatch :color="c"
+                                                  :is-base-color="true"
+                                                  @toggleOwnership="toggleOwnership(c)"></color-swatch>
+                                </div>
+                            </td>
+                            <td v-for="s in c.scores
+                        .filter(x => (onlyShowOwnedColors === false || x.c.isOwned) && enabledFamilies.indexOf(x.c.family) > -1)
+                        .slice(0, numberOfMatchesToDisplay)"
+                                :key="s.id">
+                                <color-swatch :color="s.c"
+                                              :score="s.d"
+                                              :is-base-color="false"></color-swatch>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -113,18 +129,26 @@
         data() {
             return {
                 all: [],
-                textFilter: '',
-                numeral,
+                colorFamilies: [],
+                isLoading: true,
                 numberOfMatchesToDisplay: 4,
+                numeral,
                 onlyShowOwnedColors: false,
                 selectedTab: 'color_list',
+                textFilter: '',
             };
         },
         computed: {
+            enabledFamilies() {
+                return this.colorFamilies.filter(x => x.isEnabled).map(x => x.family);
+            },
+            colorsFromEnabledFamilies() {
+              return this.all.filter(x=> this.enabledFamilies.indexOf(x.family) > -1);
+            },
             filteredColors() {
                 const filtered = this.textFilter.trim() !== ''
-                    ? this.all.filter(x => x.name.toLowerCase().indexOf(this.textFilter) > -1 || x.code.toLowerCase().indexOf(this.textFilter) > -1)
-                    : this.all;
+                    ? this.colorsFromEnabledFamilies.filter(x => x.name.toLowerCase().indexOf(this.textFilter) > -1 || x.code.toLowerCase().indexOf(this.textFilter) > -1)
+                    : this.colorsFromEnabledFamilies;
                 return this.onlyShowOwnedColors
                     ? filtered.filter(x => x.isOwned)
                     : filtered;
@@ -144,6 +168,7 @@
                     const distance = color.scores.filter(x => x.c.isOwned)[0].d;
                     const suggestedBuys = color.scores
                         .filter(x => !x.c.isOwned && x.d < distance)
+                        .filter(x => this.enabledFamilies.indexOf(x.c.family) > -1)
                         .sort((a, b) => Math.abs(a.d - (distance / 2)) - Math.abs(b.d - (distance / 2)));
 
                     return {
@@ -163,6 +188,10 @@
                 window.localStorage.setItem('owned-colors', JSON.stringify(this.ownedColors.map((x) => {
                     return {name: x.name, family: x.family};
                 })));
+            },
+            toggleFamily(f) {
+                f.isEnabled = !f.isEnabled;
+                window.localStorage.setItem('enabled-families', this.enabledFamilies);
             }
         },
         mounted() {
@@ -171,36 +200,41 @@
                 ownedColors = JSON.parse(window.localStorage.getItem('owned-colors'));
             }
             let id = 0;
-            
-            const colorFamilies = [
+            const enabledFamily = window.localStorage.getItem('enabled-families');
+            this.colorFamilies = [
                 {
                     list: VallejoModelColors,
                     family: 'Vallejo Model Color',
                     logo: ModelColorLogo,
+                    isEnabled: enabledFamily == null || (enabledFamily != null && enabledFamily.indexOf('Vallejo Model Color') > -1)
                 },
                 {
                     list: VallejoGameColors,
-                    family: 'Vallejo Model Color',
+                    family: 'Vallejo Game Color',
                     logo: GameColorLogo,
+                    isEnabled: enabledFamily == null || (enabledFamily != null && enabledFamily.indexOf('Vallejo Game Color') > -1)
                 },
                 {
                     list: VallejoPanzerAces,
-                    family: 'Vallejo Model Color',
+                    family: 'Vallejo Panzer Aces',
                     logo: PanzerAcesLogo,
+                    isEnabled: enabledFamily == null || (enabledFamily != null && enabledFamily.indexOf('Vallejo Panzer Aces') > -1)
                 },
                 {
                     list: CitadelBase,
                     family: 'Citadel Base',
                     logo: CitadelBaseLogo,
+                    isEnabled: enabledFamily == null || (enabledFamily != null && enabledFamily.indexOf('Citadel Base') > -1)
                 },
                 {
                     list: CitadelLayer,
                     family: 'Citadel Layer',
                     logo: CitadelLayerLogo,
+                    isEnabled: enabledFamily == null || (enabledFamily != null && enabledFamily.indexOf('Citadel Layer') > -1)
                 },
             ];
 
-            this.all = colorFamilies.map((cf) => {
+            this.all = this.colorFamilies.map((cf) => {
                 return cf.list.map((c) => {
                     id += 1;
                     const r = parseInt(c.rgb.slice(1, 3), 16);
@@ -235,6 +269,7 @@
                 });
                 c1.scores = scores.sort((a, b) => a.d - b.d);
             });
+            this.isLoading = false;
         }
     }
 
