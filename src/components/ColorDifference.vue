@@ -18,6 +18,9 @@
                 <button @click="selectedTab = 'stats'" :class="{ selected: selectedTab == 'stats' }">Purchase
                     recommendations
                 </button>
+                <button @click="selectedTab = 'import_export'" :class="{ selected: selectedTab == 'import-export' }">
+                    Import / Export
+                </button>
             </div>
             <div class="tab" id="stats" v-show="selectedTab == 'stats'">
                 <div class="form">
@@ -111,6 +114,21 @@
                     </table>
                 </div>
             </div>
+            <div class="tab" id="import_export" v-show="selectedTab == 'import_export'">
+                <form>
+                    <div>
+                        <button @click="exportCollection">Export my collection</button>
+                    </div>
+                    <div style="margin-top: 8px;">
+                        <label for="import_file" class="file-upload-label">
+                            <input id="import_file"
+                                   type="file"
+                                   class="btn"
+                                   @change="importCollection">Import a collection
+                        </label>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </template>
@@ -200,6 +218,44 @@
             toggleFamily(f) {
                 f.isEnabled = !f.isEnabled;
                 window.localStorage.setItem('enabled-families', this.enabledFamilies);
+            },
+            exportCollection() {
+                if (window.localStorage.getItem('owned-colors') != null
+                    && window.localStorage.getItem('enabled-families') != null) {
+                    const ownedColors = window.localStorage.getItem('owned-colors');
+                    const enabledFamilies = window.localStorage.getItem('enabled-families');
+                    this.download(JSON.stringify({
+                        ownedColors,
+                        enabledFamilies,
+                    }), 'color-matcher.json', 'application/json');
+                }
+            },
+            importCollection(e) {
+                debugger; // eslint-disable-line
+                const reader = new window.FileReader();
+                reader.onload = (event) => {
+                    const data = JSON.parse(event.target.result);
+                    window.localStorage.setItem('owned-colors', data.ownedColors);
+                    window.localStorage.setItem('enabled-families', data.enabledFamilies);
+                };
+                reader.readAsText(e.target.files[0]);
+            },
+            download(data, filename, type) {
+                const file = new Blob([data], {type: type});
+                if (window.navigator.msSaveOrOpenBlob) // IE10+
+                    window.navigator.msSaveOrOpenBlob(file, filename);
+                else { // Others
+                    const a = document.createElement("a");
+                    const url = URL.createObjectURL(file);
+                    a.href = url;
+                    a.download = filename;
+                    document.body.appendChild(a);
+                    a.click();
+                    setTimeout(function () {
+                        document.body.removeChild(a);
+                        window.URL.revokeObjectURL(url);
+                    }, 0);
+                }
             }
         },
         mounted() {
@@ -287,16 +343,17 @@
 <style scoped>
 
     .color-families label {
-        border: solid 1px rgba(0,0,0,0.1);
+        border: solid 1px rgba(0, 0, 0, 0.1);
         border-radius: 4px;
         padding: 8px;
         display: flex;
         align-items: center;
-        box-shadow: 0 2px 3px rgba(0,0,0,0.15);
+        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
         font-size: 0.9em;
         cursor: pointer;
     }
-    .color-families label:hover{
+
+    .color-families label:hover {
         background: rgba(50, 205, 50, 0.15);
     }
 
