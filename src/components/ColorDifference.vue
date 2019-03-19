@@ -1,9 +1,10 @@
 <template>
-    <div>
+    <div class="color-diff">
         <div v-if="isLoading" class="loading">
             Loading...
         </div>
         <div v-if="!isLoading" class="loaded">
+            <p class="pad-h">Enable / disable color families. Disabled color families will not appear in the list of matches and purchase recommendations below.</p>
             <div class="form color-families">
                 <label v-for="cf in colorFamilies" :key="cf.family" :class="{ checked: cf.isEnabled }">
                     <input type="checkbox" :checked="cf.isEnabled" @click="toggleFamily(cf)">
@@ -18,14 +19,14 @@
                 <button @click="selectedTab = 'stats'" :class="{ selected: selectedTab == 'stats' }">Purchase
                     recommendations
                 </button>
-                <button @click="selectedTab = 'import_export'" :class="{ selected: selectedTab == 'import-export' }">
+                <button @click="selectedTab = 'import_export'" :class="{ selected: selectedTab == 'import_export' }">
                     Import / Export
                 </button>
             </div>
             <div class="tab" id="stats" v-show="selectedTab == 'stats'">
                 <div class="form">
                     <p>The following list is a recommendation of paints to purchase based on the colors you already own.<br>
-                        It looks at the biggest existing gaps (e-delta) between all your colors and suggests colors
+                        It looks at the biggest existing gaps (e-delta) between all your colors and suggests the colors
                         close to
                         the halfway point for each of these gaps.</p>
                 </div>
@@ -40,7 +41,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="pair in colorPairsWithBiggestDistance.slice(0,20)" :key="pair.id">
+                        <tr v-for="pair in colorPairsWithBiggestDistance.slice(0,100)" :key="pair.id">
                             <td>
                                 <color-swatch v-if="pair.suggestedBuy != null"
                                               :color="pair.suggestedBuy.c"
@@ -88,7 +89,7 @@
                     <table>
                         <thead>
                         <tr>
-                            <th>Base color ({{filteredColors.length}})</th>
+                            <th>Color ({{filteredColors.length}})</th>
                             <th :colspan="numberOfMatchesToDisplay">Matches</th>
                         </tr>
                         </thead>
@@ -231,7 +232,6 @@
                 }
             },
             importCollection(e) {
-                debugger; // eslint-disable-line
                 const reader = new window.FileReader();
                 reader.onload = (event) => {
                     const data = JSON.parse(event.target.result);
@@ -325,13 +325,15 @@
                 c1.isOwned = (ownedColors.find(x => x.name === c1.name && x.family === c1.family) != null)
                 const scores = this.all.filter(c => c.id !== c1.id).map((c2) => {
                     id += 1;
+                    const d = deltaE.getDeltaE00(c1.lab, c2.lab);
                     return {
                         id,
                         c: c2,
-                        d: deltaE.getDeltaE00(c1.lab, c2.lab)
+                        d
                     };
                 });
-                c1.scores = scores.sort((a, b) => a.d - b.d);
+                scores.sort((a, b) => a.d - b.d);
+                c1.scores = scores;
             });
             this.isLoading = false;
         }
@@ -341,6 +343,16 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+    .color-diff {
+        padding-top: 16px;
+        font-size: 12px;
+    }
+
+    .pad-h {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
 
     .color-families label {
         border: solid 1px rgba(0, 0, 0, 0.1);
@@ -370,6 +382,11 @@
     .color-families img {
         height: 32px;
         margin-right: 8px;
+        filter: grayscale(100%);
+    }
+
+    .color-families label.checked img {
+        filter: grayscale(0%);
     }
 
     .form {
@@ -385,6 +402,10 @@
 
     .form label {
         margin-right: 16px;
+    }
+
+    .form input[type=text] {
+        flex-grow: 1;
     }
 
     .filler {
@@ -416,6 +437,7 @@
         padding: 8px 8px;
     }
 
+    table thead tr th:first-of-type,
     table tbody tr td:first-of-type {
         border-right: solid 1px #ccc;
     }
@@ -426,19 +448,20 @@
 
     .tab-list {
         display: flex;
-        border-bottom: solid 1px #ccc;
         margin-bottom: 16px;
+        border-bottom: solid 1px #ccc;
     }
 
     .tab-list button {
-        background: #eee;
-        border: solid 1px #ccc;
-        border-radius: 0;
-        border-bottom-width: 0;
+        background: transparent;
+        border-width: 0;
+        border-color: transparent;
+        border-bottom-width: 4px;
         box-shadow: none;
         margin: 0;
         padding-left: 24px;
         padding-right: 24px;
+        outline: none;
     }
 
     .tab-list button:first-of-type {
@@ -446,7 +469,11 @@
     }
 
     .tab-list button.selected {
-        background: #fff;
+        border-color: #108bff;
+        color: #108bff;
+    }
+    .tab-list button:hover {
+        color: #108bffcc;
     }
 
 </style>

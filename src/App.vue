@@ -42,6 +42,11 @@
 </script>
 
 <style>
+    html,
+    body{
+        padding: 0;
+        margin: 0;
+    }
     #app {
         font-family: 'Montserrat', Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
@@ -62,7 +67,7 @@
         -moz-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
         box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
         font-size: 14px;
-        background: #eee;
+        background: #f7f7f7;
     }
     .file-upload-label{
     }
@@ -98,6 +103,11 @@
     h1 {
         display: flex;
         align-items: center;
+        background: #fcfcfc;
+        border-bottom: solid 1px rgba(0,0,0,0.05);
+        box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+        margin: 0;
+        padding: 8px 16px;
     }
 
     h1 svg {
