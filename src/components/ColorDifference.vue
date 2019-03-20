@@ -5,7 +5,7 @@
                 :callbacks="tourCallbacks"></v-tour>
 
         <div v-if="isLoading" class="loading">
-            Loading...
+            Please wait, processing all paints...
         </div>
         <div v-if="!isLoading && !isLocalStorageSupported">
             Sorry, this tool need an up to date browser supporting "localStorage" in order to properly work.
@@ -368,106 +368,108 @@
                 return;
             }
 
-            let ownedColors = [];
-            if (window.localStorage.getItem('owned-colors') != null) {
-                ownedColors = JSON.parse(window.localStorage.getItem('owned-colors'));
-            }
-            let id = 0;
-            const enabledFamily = window.localStorage.getItem('enabled-families');
-            this.colorFamilies = [
-                {
-                    list: VallejoModelColors,
-                    family: 'Vallejo Model Color',
-                    shortName: 'Model Color',
-                    logo: ModelColorLogo,
-                    isEnabled: enabledFamily == null || (enabledFamily != null && enabledFamily.indexOf('Vallejo Model Color') > -1)
-                },
-                {
-                    list: VallejoGameColors,
-                    family: 'Vallejo Game Color',
-                    shortName: 'Game Color',
-                    logo: GameColorLogo,
-                    isEnabled: enabledFamily == null || (enabledFamily != null && enabledFamily.indexOf('Vallejo Game Color') > -1)
-                },
-                {
-                    list: VallejoPanzerAces,
-                    family: 'Vallejo Panzer Aces',
-                    shortName: 'Panzer Aces',
-                    logo: PanzerAcesLogo,
-                    isEnabled: enabledFamily == null || (enabledFamily != null && enabledFamily.indexOf('Vallejo Panzer Aces') > -1)
-                },
-                {
-                    list: CitadelBase,
-                    family: 'Citadel Base',
-                    shortName: 'Citadel Base',
-                    logo: CitadelBaseLogo,
-                    isEnabled: enabledFamily == null || (enabledFamily != null && enabledFamily.indexOf('Citadel Base') > -1)
-                },
-                {
-                    list: CitadelLayer,
-                    family: 'Citadel Layer',
-                    shortName: 'Citadel Layer',
-                    logo: CitadelLayerLogo,
-                    isEnabled: enabledFamily == null || (enabledFamily != null && enabledFamily.indexOf('Citadel Layer') > -1)
-                },
-                {
-                    list: ArmyPainter,
-                    family: 'Army Painter',
-                    shortName: 'Army Painter',
-                    logo: ArmyPainterLogo,
-                    isEnabled: enabledFamily == null || (enabledFamily != null && enabledFamily.indexOf('Army Painter') > -1)
-                },
-                {
-                    list: P3,
-                    family: 'P3 Formula',
-                    shortName: 'P3 Formula',
-                    logo: P3Logo,
-                    isEnabled: enabledFamily == null || (enabledFamily != null && enabledFamily.indexOf('P3 Formula') > -1)
-                },
-            ];
+            setTimeout(() => {
+                let ownedColors = [];
+                if (window.localStorage.getItem('owned-colors') != null) {
+                    ownedColors = JSON.parse(window.localStorage.getItem('owned-colors'));
+                }
+                let id = 0;
+                const enabledFamily = window.localStorage.getItem('enabled-families');
+                this.colorFamilies = [
+                    {
+                        list: VallejoModelColors,
+                        family: 'Vallejo Model Color',
+                        shortName: 'Model Color',
+                        logo: ModelColorLogo,
+                        isEnabled: enabledFamily == null || (enabledFamily != null && enabledFamily.indexOf('Vallejo Model Color') > -1)
+                    },
+                    {
+                        list: VallejoGameColors,
+                        family: 'Vallejo Game Color',
+                        shortName: 'Game Color',
+                        logo: GameColorLogo,
+                        isEnabled: enabledFamily == null || (enabledFamily != null && enabledFamily.indexOf('Vallejo Game Color') > -1)
+                    },
+                    {
+                        list: VallejoPanzerAces,
+                        family: 'Vallejo Panzer Aces',
+                        shortName: 'Panzer Aces',
+                        logo: PanzerAcesLogo,
+                        isEnabled: enabledFamily == null || (enabledFamily != null && enabledFamily.indexOf('Vallejo Panzer Aces') > -1)
+                    },
+                    {
+                        list: CitadelBase,
+                        family: 'Citadel Base',
+                        shortName: 'Citadel Base',
+                        logo: CitadelBaseLogo,
+                        isEnabled: enabledFamily == null || (enabledFamily != null && enabledFamily.indexOf('Citadel Base') > -1)
+                    },
+                    {
+                        list: CitadelLayer,
+                        family: 'Citadel Layer',
+                        shortName: 'Citadel Layer',
+                        logo: CitadelLayerLogo,
+                        isEnabled: enabledFamily == null || (enabledFamily != null && enabledFamily.indexOf('Citadel Layer') > -1)
+                    },
+                    {
+                        list: ArmyPainter,
+                        family: 'Army Painter',
+                        shortName: 'Army Painter',
+                        logo: ArmyPainterLogo,
+                        isEnabled: enabledFamily == null || (enabledFamily != null && enabledFamily.indexOf('Army Painter') > -1)
+                    },
+                    {
+                        list: P3,
+                        family: 'P3 Formula',
+                        shortName: 'P3 Formula',
+                        logo: P3Logo,
+                        isEnabled: enabledFamily == null || (enabledFamily != null && enabledFamily.indexOf('P3 Formula') > -1)
+                    },
+                ];
 
-            this.all = this.colorFamilies.map((cf) => {
-                return cf.list.map((c) => {
-                    id += 1;
-                    const r = parseInt(c.rgb.slice(1, 3), 16);
-                    const g = parseInt(c.rgb.slice(3, 5), 16);
-                    const b = parseInt(c.rgb.slice(5, 7), 16);
-                    const lab = space.rgb.lab([r, g, b]);
-                    return {
-                        id,
-                        family: cf.family,
-                        logo: cf.logo,
-                        code: c.code,
-                        name: c.name,
-                        rgb: c.rgb,
-                        r,
-                        g,
-                        b,
-                        lab: {L: lab[0], A: lab[1], B: lab[2]},
-                        isOwned: false,
-                    };
-                }).sort((a, b) => `${a.code} - ${a.name}`.localeCompare(`${b.code} - ${b.name}`));
-            }).reduce((mem, f) => [...mem, ...f], []);
+                this.all = this.colorFamilies.map((cf) => {
+                    return cf.list.map((c) => {
+                        id += 1;
+                        const r = parseInt(c.rgb.slice(1, 3), 16);
+                        const g = parseInt(c.rgb.slice(3, 5), 16);
+                        const b = parseInt(c.rgb.slice(5, 7), 16);
+                        const lab = space.rgb.lab([r, g, b]);
+                        return {
+                            id,
+                            family: cf.family,
+                            logo: cf.logo,
+                            code: c.code,
+                            name: c.name,
+                            rgb: c.rgb,
+                            r,
+                            g,
+                            b,
+                            lab: {L: lab[0], A: lab[1], B: lab[2]},
+                            isOwned: false,
+                        };
+                    }).sort((a, b) => `${a.code} - ${a.name}`.localeCompare(`${b.code} - ${b.name}`));
+                }).reduce((mem, f) => [...mem, ...f], []);
 
-            this.all.forEach((c1) => {
-                c1.isOwned = (ownedColors.find(x => x.name === c1.name && x.family === c1.family) != null)
-                const scores = this.all.filter(c => c.id !== c1.id).map((c2) => {
-                    id += 1;
-                    const d = deltaE.getDeltaE00(c1.lab, c2.lab);
-                    return {
-                        id,
-                        c: c2,
-                        d
-                    };
+                this.all.forEach((c1) => {
+                    c1.isOwned = (ownedColors.find(x => x.name === c1.name && x.family === c1.family) != null)
+                    const scores = this.all.filter(c => c.id !== c1.id).map((c2) => {
+                        id += 1;
+                        const d = deltaE.getDeltaE00(c1.lab, c2.lab);
+                        return {
+                            id,
+                            c: c2,
+                            d
+                        };
+                    });
+                    scores.sort((a, b) => a.d - b.d);
+                    c1.scores = scores;
                 });
-                scores.sort((a, b) => a.d - b.d);
-                c1.scores = scores;
-            });
-            this.isLoading = false;
+                this.isLoading = false;
 
-            if (Cookies.get('tour') !== 'done') {
-                this.$tours['myTour'].start();
-            }
+                if (Cookies.get('tour') !== 'done') {
+                    this.$tours['myTour'].start();
+                }
+            }, 100);
         }
     }
 
@@ -622,6 +624,14 @@
     .actions {
         display: flex;
         align-items: center;
+    }
+
+    .loading {
+        margin-top: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 16px;
     }
 
 </style>
