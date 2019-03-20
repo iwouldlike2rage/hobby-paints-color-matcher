@@ -524,11 +524,9 @@
     .color-families img {
         height: 32px;
         margin-right: 8px;
-        // filter: grayscale(100%);
     }
 
     .color-families label.checked img {
-        // filter: grayscale(0%);
     }
 
     .form {
