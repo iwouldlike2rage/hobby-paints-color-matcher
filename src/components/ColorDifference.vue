@@ -519,6 +519,7 @@
     .color-families label.checked {
         font-weight: 600;
         background: rgba(50, 205, 50, 0.27);
+        border-color: #38b15a;
     }
 
     .color-families img {
