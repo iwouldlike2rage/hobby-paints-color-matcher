@@ -29,6 +29,8 @@
             </span>
             <div class="actions">
                 <a href="mailto:iwouldlike2rage@gmail.com?subject=Miniature Paints Color Matcher Feedback">Send feedback</a>
+                &nbsp;
+                <a href="https://disclaimergenerator.net/live.php?token=Uaa3gumwnKPLkgm81GhGZsvwXPhsTHXp">Disclaimer</a>
             </div>
         </h1>
         <color-difference></color-difference>

@@ -89,7 +89,9 @@
                     <p>The following list is a recommendation of paints to purchase based on the colors you already own.<br>
                         It looks at the biggest existing gaps (e-delta) between all your colors and suggests the colors
                         close to
-                        the halfway point for each of these gaps.</p>
+                        the halfway point for each of these gaps.<br>
+                        Disabled paint families will not appear in the recommendations.
+                    </p>
                 </div>
                 <div v-if="colorPairsWithBiggestDistance != null">
                     <table>
