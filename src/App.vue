@@ -24,7 +24,12 @@
                     </g>
                 </g>
             </svg>
+            <span class="title">
             Miniature Paints Color Matcher
+            </span>
+            <div class="actions">
+                <a href="mailto:iwouldlike2rage@gmail.com?subject=Miniature Paints Color Matcher Feedback">Send feedback</a>
+            </div>
         </h1>
         <color-difference></color-difference>
     </div>
@@ -37,6 +42,8 @@
         name: 'app',
         components: {
             ColorDifference
+        },
+        mounted() {
         }
     }
 </script>
@@ -108,11 +115,20 @@
         box-shadow: 0 3px 6px rgba(0,0,0,0.15);
         margin: 0;
         padding: 8px 16px;
+        font-size: 20px;
     }
 
     h1 svg {
-        width: 64px;
-        height: 64px;
+        width: 48px;
+        height: 48px;
         margin-right: 16px;
+    }
+
+    h1 .title {
+        flex-grow: 1;
+    }
+
+    h1 .actions {
+        font-size: 12px;
     }
 </style>
