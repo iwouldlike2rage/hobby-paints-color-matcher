@@ -28,7 +28,8 @@
             Miniature Paints Color Matcher
             </span>
             <div class="actions">
-                <a href="mailto:iwouldlike2rage@gmail.com?subject=Miniature Paints Color Matcher Feedback">Send feedback</a>
+                <a href="mailto:iwouldlike2rage@gmail.com?subject=Miniature Paints Color Matcher Feedback">Send
+                    feedback</a>
                 &nbsp;
                 <a href="https://disclaimergenerator.net/live.php?token=Uaa3gumwnKPLkgm81GhGZsvwXPhsTHXp">Disclaimer</a>
             </div>
@@ -52,20 +53,21 @@
 
 <style>
     html,
-    body{
+    body {
         padding: 0;
         margin: 0;
-    }
-    #app {
-        font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+    }
+
+    #app {
         color: #2c3e50;
-        font-size: 14px;
+        font-size: 13px;
     }
 
     input, button, select {
-        font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     }
 
     input, button, .file-upload-label {
@@ -75,11 +77,13 @@
         -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
         -moz-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
         box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
-        font-size: 14px;
+        font-size: 13px;
         background: #f7f7f7;
     }
-    .file-upload-label{
+
+    .file-upload-label {
     }
+
     .file-upload-label input {
         display: none;
     }
@@ -113,8 +117,8 @@
         display: flex;
         align-items: center;
         background: #fcfcfc;
-        border-bottom: solid 1px rgba(0,0,0,0.05);
-        box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+        border-bottom: solid 1px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
         margin: 0;
         padding: 8px 16px;
         font-size: 20px;
@@ -132,5 +136,147 @@
 
     h1 .actions {
         font-size: 12px;
+        font-weight: 400;
     }
+
+    .table-wrapper {
+        position: relative;
+        overflow: auto;
+        border: 1px solid black;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch; /* Lets it scroll lazy */
+    }
+
+    table {
+        width: 100%;
+    }
+    
+    table thead th:first-of-type,
+    table tbody td:first-of-type{
+        position: sticky;
+        width: 210px;
+        min-width: 210px;
+        max-width: 210px;
+        left: 0;
+    }
+
+    @media screen and (max-width: 1024px) {
+        table thead th:first-of-type,
+        table tbody td:first-of-type{
+            position: sticky;
+            width: 150px;
+            min-width: 150px;
+            max-width: 150px;
+            left: 0;
+        }
+    }
+
+    table tr:nth-of-type(2n+1) td{
+        background: #fff;
+    }
+
+    table tr:nth-of-type(2n) td{
+        background: #eee;
+    }
+
+    .v-step {
+        z-index: 1;
+    }
+
+    .tooltip {
+        display: block !important;
+        z-index: 10000;
+        font-size: 12px;
+    }
+
+    .tooltip .tooltip-inner {
+        background: black;
+        color: white;
+        border-radius: 16px;
+        padding: 10px 15px 9px;
+        max-width: 200px;
+    }
+
+    .tooltip .tooltip-arrow {
+        width: 0;
+        height: 0;
+        border-style: solid;
+        position: absolute;
+        margin: 5px;
+        border-color: black;
+    }
+
+    .tooltip[x-placement^="top"] {
+        margin-bottom: 5px;
+    }
+
+    .tooltip[x-placement^="top"] .tooltip-arrow {
+        border-width: 5px 5px 0 5px;
+        border-left-color: transparent !important;
+        border-right-color: transparent !important;
+        border-bottom-color: transparent !important;
+        bottom: -5px;
+        left: calc(50% - 5px);
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+
+    .tooltip[x-placement^="bottom"] {
+        margin-top: 5px;
+    }
+    .tooltip[x-placement^="bottom"] .tooltip-arrow {
+        border-width: 0 5px 5px 5px;
+        border-left-color: transparent !important;
+        border-right-color: transparent !important;
+        border-top-color: transparent !important;
+        top: -5px;
+        left: calc(50% - 5px);
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+
+    .tooltip[x-placement^="right"] {
+        margin-left: 5px;
+    }
+    .tooltip[x-placement^="right"] .tooltip-arrow {
+        border-width: 5px 5px 5px 0;
+        border-left-color: transparent !important;
+        border-top-color: transparent !important;
+        border-bottom-color: transparent !important;
+        left: -5px;
+        top: calc(50% - 5px);
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+
+    .tooltip[x-placement^="left"] {
+        margin-right: 5px;
+    }
+    .tooltip[x-placement^="left"] .tooltip-arrow {
+        border-width: 5px 0 5px 5px;
+        border-top-color: transparent !important;
+        border-right-color: transparent !important;
+        border-bottom-color: transparent !important;
+        right: -5px;
+        top: calc(50% - 5px);
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+
+    .tooltip[aria-hidden='true'] {
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity .15s, visibility .15s;
+    }
+
+    .tooltip[aria-hidden='false'] {
+        visibility: visible;
+        opacity: 1;
+        transition: opacity .15s;
+    }
+
 </style>

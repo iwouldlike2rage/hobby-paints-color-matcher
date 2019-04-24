@@ -41,25 +41,27 @@
                         paints I
                         own
                     </label>
-                    <button id="display_more_matches"
-                            class="btn" :disabled="numberOfMatchesToDisplay >= 10"
-                            @click="numberOfMatchesToDisplay += 1">
-                        + More
-                        matches
-                    </button>
-                    <button id="display_less_matches"
-                            class="btn" :disabled="numberOfMatchesToDisplay <= 1"
-                            @click="numberOfMatchesToDisplay -= 1">
-                        - Less
-                        matches
-                    </button>
+                    <div>
+                        <button id="display_more_matches"
+                                class="btn" :disabled="numberOfMatchesToDisplay >= 10"
+                                @click="numberOfMatchesToDisplay += 1">
+                            + More
+                            matches
+                        </button>
+                        <button id="display_less_matches"
+                                class="btn" :disabled="numberOfMatchesToDisplay <= 1"
+                                @click="numberOfMatchesToDisplay -= 1">
+                            - Less
+                            matches
+                        </button>
+                    </div>
                 </div>
-                <div>
+                <div class="table-wrapper">
                     <table id="color_matches_table">
                         <thead>
                         <tr>
-                            <th id="col_base">Color ({{filteredColors.length}})</th>
-                            <th id="col_matches" :colspan="numberOfMatchesToDisplay">Matches</th>
+                            <th id="col_base">Colors ({{filteredColors.length}})</th>
+                            <th id="col_matches" :colspan="numberOfMatchesToDisplay">Matches ({{numberOfMatchesToDisplay}})</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -93,13 +95,13 @@
                         Disabled paint families will not appear in the recommendations.
                     </p>
                 </div>
-                <div v-if="colorPairsWithBiggestDistance != null">
+                <div v-if="colorPairsWithBiggestDistance != null" class="table-wrapper">
                     <table>
                         <thead>
                         <tr>
                             <th>Recommended buy</th>
                             <th>First owned color</th>
-                            <th>Distance (e-delta)</th>
+                            <th>Distance<br>(e-delta)</th>
                             <th>Second owned color</th>
                         </tr>
                         </thead>
@@ -259,7 +261,9 @@
             },
             filteredColors() {
                 const filtered = this.textFilter.trim() !== ''
-                    ? this.colorsFromEnabledFamilies.filter(x => x.name.toLowerCase().indexOf(this.textFilter) > -1 || x.code.toLowerCase().indexOf(this.textFilter) > -1)
+                    ? this.colorsFromEnabledFamilies.filter(x =>
+                        x.name.toLowerCase().indexOf(this.textFilter.toLowerCase()) > -1
+                        || x.code != null && x.code.toLowerCase().indexOf(this.textFilter.toLowerCase()) > -1)
                     : this.colorsFromEnabledFamilies;
                 return this.onlyShowOwnedColors
                     ? filtered.filter(x => x.isOwned)
@@ -493,6 +497,7 @@
     .color-families {
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
     }
 
     .color-families label {
@@ -502,9 +507,9 @@
         display: flex;
         align-items: center;
         box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
-        font-size: 0.9em;
         cursor: pointer;
         margin-bottom: 6px;
+        width: 140px;
     }
 
     .color-families label:hover {
@@ -523,22 +528,28 @@
     }
 
     .color-families img {
-        height: 32px;
+        height: 28px;
         margin-right: 8px;
+        margin-left: 8px;
     }
 
     .color-families label.checked img {
     }
 
     .form {
-        margin-bottom: 16px;
         display: flex;
         align-items: center;
-        padding: 0 16px
+        padding: 0 16px;
+        flex-wrap: wrap;
+    }
+
+    .form > * {
+        margin-bottom: 16px;
+        margin-right: 16px;
     }
 
     .form button {
-        margin-left: 16px;
+        margin-right: 16px;
     }
 
     .form label {
@@ -547,6 +558,13 @@
 
     .form input[type=text] {
         flex-grow: 1;
+    }
+
+    .form p {
+        margin-left: -8px;
+        margin-right: -8px;
+        margin-top: -4px;
+        padding: 0;
     }
 
     .filler {
@@ -604,9 +622,10 @@
         border-bottom-width: 4px;
         box-shadow: none;
         margin: 0;
-        padding-left: 24px;
+        padding-left: 16px;
         padding-right: 24px;
         outline: none;
+        font-size: 14px;
     }
 
     .tab-list button:first-of-type {

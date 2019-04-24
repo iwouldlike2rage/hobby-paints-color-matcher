@@ -29,7 +29,8 @@
                 </div>
                 <div class="score" v-if="!isBaseColor && score != null">
                 <span class="badge"
-                      :class="{ success: score < 2, warning: score >=2 && score < 10, danger: score >=10 }">
+                      :class="{ success: score < 2, warning: score >=2 && score < 10, danger: score >=10 }"
+                      v-tooltip.top-center="'This is the Delta-E, the difference between this color and the base color. The lower, the better.'">
                     {{numeral(score).format('0.00')}}
                 </span>
                 </div>
@@ -131,6 +132,9 @@
     .name {
         font-weight: 600;
         font-size: 1.2em;
+        max-width: 100px;
+        word-wrap: break-word;
+        white-space: pre-wrap;
     }
 
     .info{
@@ -143,7 +147,8 @@
     }
 
     .family {
-        font-size: 0.9em;
+        display: flex;
+        align-items: center;
     }
 
     .family img{
@@ -189,6 +194,24 @@
     .badge.danger {
         background: #ff0042;
         color: #fff;
+    }
+
+    @media screen and (max-width: 1024px){
+        .swatch {
+            width: 28px;
+            height: 28px;
+            min-height: 28px;
+            min-width: 28px;
+        }
+
+        .color{
+            font-size: 10px;
+            max-width: 150px;
+        }
+
+        .family img {
+            max-height: 20px;
+        }
     }
 
 </style>
