@@ -28,6 +28,9 @@
                 <button @click="selectedTab = 'stats'" :class="{ selected: selectedTab == 'stats' }">Purchase
                     recommendations
                 </button>
+                <button @click="selectedTab = 'randomizer'" :class="{ selected: selectedTab == 'randomizer' }">
+                    Randomizer
+                </button>
                 <button @click="selectedTab = 'import_export'" :class="{ selected: selectedTab == 'import_export' }">
                     Import / Export
                 </button>
@@ -61,7 +64,9 @@
                         <thead>
                         <tr>
                             <th id="col_base">Colors ({{filteredColors.length}})</th>
-                            <th id="col_matches" :colspan="numberOfMatchesToDisplay">Matches ({{numberOfMatchesToDisplay}})</th>
+                            <th id="col_matches" :colspan="numberOfMatchesToDisplay">Matches
+                                ({{numberOfMatchesToDisplay}})
+                            </th>
                         </tr>
                         </thead>
                         <tbody>
@@ -130,6 +135,17 @@
                     </table>
                 </div>
             </div>
+            <div class="tab" id="randomizer" v-show="selectedTab == 'randomizer'">
+                <label for="random_colors_count"># of random colors to pick:
+                    <input id="random_colors_count" type="number" min="1" max="10" v-model="randomColorsCount"></label>
+                <button @click="pickRandomColors">Pick random colors</button>
+                <div class="color" v-for="c in randomColors" :key="c.id">
+                    <color-swatch :color="c"
+                                  :use-full-width="true"
+                                  :is-base-color="true"></color-swatch>
+                </div>
+
+            </div>
             <div class="tab" id="import_export" v-show="selectedTab == 'import_export'">
                 <form>
                     <p>This tools stores the list of paints you own and the paint family settings in the browser's local
@@ -183,6 +199,8 @@
                 numberOfMatchesToDisplay: 4,
                 numeral,
                 onlyShowOwnedColors: false,
+                randomColors: [],
+                randomColorsCount: 5,
                 selectedTab: 'color_list',
                 textFilter: '',
                 steps: [
@@ -361,7 +379,21 @@
                         window.URL.revokeObjectURL(url);
                     }, 0);
                 }
-            }
+            },
+            pickRandomColors() {
+                let interval = 50;
+                let count = 10;
+                const randomize = () => {
+                    this.randomColors = this.ownedColors.sort(() => Math.random() - 0.5).slice(0, this.randomColorsCount);
+                    count -= 1;
+                    if (count > 0) {
+                        setTimeout(() => {
+                            randomize();
+                        }, interval);
+                    }
+                };
+                randomize();
+            },
         },
         mounted() {
             this.$ga.page('/')
@@ -370,7 +402,7 @@
                 window.localStorage.setItem(test, test);
                 window.localStorage.removeItem(test);
                 this.isLocalStorageSupported = true;
-            } catch(e) {
+            } catch (e) {
                 return;
             }
 
@@ -654,4 +686,15 @@
         font-size: 16px;
     }
 
+    #randomizer {
+        padding: 16px 32px;
+    }
+
+    #randomizer input {
+        margin: 0 6px;
+    }
+
+    #randomizer .color {
+        margin: 8px 0;
+    }
 </style>

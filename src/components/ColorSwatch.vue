@@ -1,5 +1,5 @@
 <template>
-    <div class="color">
+    <div class="color" :class="{ 'full-width': useFullWidth }">
         <div class="swatch-container">
             <div class="swatch"
                  :class="{ 'is-owned': color.isOwned, 'base-color': isBaseColor }"
@@ -60,7 +60,11 @@
             isBaseColor: {
                 type: Boolean,
                 default: false,
-            }
+            },
+            useFullWidth: {
+                type: Boolean,
+                default: false,
+            },
         },
         data() {
             return {
@@ -87,6 +91,7 @@
         box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
         margin-right: 8px;
     }
+
     .swatch {
         width: 40px;
         min-width: 40px;
@@ -135,6 +140,10 @@
         max-width: 100px;
         word-wrap: break-word;
         white-space: pre-wrap;
+    }
+
+    .color.full-width .name {
+        max-width: 100%;
     }
 
     .info{
