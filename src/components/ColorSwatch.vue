@@ -47,39 +47,40 @@
 </template>
 
 <script>
-    import numeral from 'numeral';
-    export default {
-        props: {
-            color: {
-                type: Object,
-            },
-            score: {
-                type: Number,
-                default: null,
-            },
-            isBaseColor: {
-                type: Boolean,
-                default: false,
-            },
-            useFullWidth: {
-                type: Boolean,
-                default: false,
-            },
-        },
-        data() {
-            return {
-                numeral,
-            };
-        },
-        methods: {
-            toggleOwnership() {
-                this.$emit('toggleOwnership', this.color);
-            },
-        },
-    }
+  import numeral from 'numeral';
+
+  export default {
+    props: {
+      color: {
+        type: Object,
+      },
+      score: {
+        type: Number,
+        default: null,
+      },
+      isBaseColor: {
+        type: Boolean,
+        default: false,
+      },
+      useFullWidth: {
+        type: Boolean,
+        default: false,
+      },
+    },
+    data() {
+      return {
+        numeral,
+      };
+    },
+    methods: {
+      toggleOwnership() {
+        this.$emit('toggleOwnership', this.color);
+      },
+    },
+  }
 </script>
 
-<style scoped>
+<style lang="scss" rel="stylesheet/scss" scoped>
     .color {
         display: flex;
         align-items: center;
@@ -146,7 +147,7 @@
         max-width: 100%;
     }
 
-    .info{
+    .info {
         display: flex;
     }
 
@@ -160,21 +161,20 @@
         align-items: center;
     }
 
-    .family img{
+    .family img {
         margin-right: 8px;
         margin-top: 3px;
         max-height: 32px;
-        box-shadow: 0 2px 3px rgba(0,0,0,0.5);
+        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
     }
 
     .code {
         font-weight: 600;
-        color: rgba(0,0,0,0.5)
+        color: rgba(0, 0, 0, 0.5)
     }
 
     .score {
     }
-
 
     .badge {
         padding: 2px 5px;
@@ -205,7 +205,7 @@
         color: #fff;
     }
 
-    @media screen and (max-width: 1024px){
+    @media screen and (max-width: 1024px) {
         .swatch {
             width: 28px;
             height: 28px;
@@ -213,9 +213,13 @@
             min-width: 28px;
         }
 
-        .color{
+        .color {
             font-size: 10px;
             max-width: 150px;
+
+            &.full-width {
+                max-width: 100%;
+            }
         }
 
         .family img {
